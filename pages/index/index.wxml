@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<!-- <navtab msg="{{msg}}" bind:msg="onMyEvent"></navtab> -->
+<!-- <search bind:val="onMyEvent"></search> -->
+<!-- <navigator url="/pages/musicList/list?num=1" hover-class="none">跳转到新页面</navigator> -->
+<!-- <image class='bg-pic' src='/images/big-bg.jpg'></image> -->
+<view class="container">
+<!-- <view bindtap='getMusic'  data-songid="613440970">
+  测试
+</view> -->
+  <navigator url="/pages/movie/movie" open-type="switchTab" hover-class="none">电影资讯</navigator>
+  <navigator url="/pages/music/music" open-type="switchTab" hover-class="none">音乐资讯</navigator>
+</view>
+
+<view class='player' hidden="{{show}}">
+  <image src='{{content.songinfo.pic_small}}'></image>
+  <view class='info'>
+      <view class='top'>
+        <view class='left'>
+        <text class='song-title'>{{content.songinfo.title}}</text>
+        <text>- {{content.songinfo.author}}</text>
+      </view>
+      <image bindtap='control' src='{{playButton}}'></image>
+    </view>
+
+    <view class='time'><text>{{cTime}}</text>/{{duration}}</view>
+    <!-- <view class='progress'>进度条</view> -->
+  </view>
+</view>
+
+<!-- <button type="primary" bindtap="audioPlay">播放</button> -->
+<!-- <button type="primary" bindtap="audioPause">暂停</button> -->
+

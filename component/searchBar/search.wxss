@@ -1,0 +1,22 @@
+/* component/searchBar/search.wxss */
+.search{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  line-height: 80rpx;
+  height:80rpx;
+}
+.search input{
+  flex: 1;
+  height: 96%;
+  border: 1rpx solid #ccc;
+  padding-left: 15rpx;
+}
+.search label{
+  height: 100%;
+  width:64px;
+  text-align: center;
+  background: #188eee;
+  color: #fff;
+  font-size: 32rpx;
+}

@@ -1,0 +1,34 @@
+<!-- 音乐列表 -->
+<view class='music-title'>
+  <image src='{{musicList.billboard.pic_s260}}'></image>
+  <text>{{musicList.billboard.name}}</text>
+</view>
+<block wx:for="{{musicList.song_list}}" wx:key="{{item.artist_id}}">
+  <view class='music-list' data-songid="{{item.song_id}}" bindtap='playMusic'>
+    <text class='rank'>{{item.rank}}</text>
+    <view class='right'>
+      <image src='{{item.pic_small}}'></image>
+      <view class='info'>
+        <text>{{item.title}}</text>
+        <text class='author-name'>{{item.author}}</text>
+      </view>
+    </view>
+  </view>
+</block>
+
+<!-- 播放器 -->
+<view class='player' hidden="{{show}}">
+  <image src='{{content.songinfo.pic_small}}'></image>
+  <view class='info'>
+      <view class='top'>
+        <view class='left'>
+        <text class='song-title'>{{content.songinfo.title}}</text>
+        <text>- {{content.songinfo.author}}</text>
+      </view>
+      <image bindtap='control' src='{{playButton}}'></image>
+    </view>
+
+    <view class='time'><text>{{cTime}}</text>/{{duration}}</view>
+    <!-- <view class='progress'>进度条</view> -->
+  </view>
+</view>

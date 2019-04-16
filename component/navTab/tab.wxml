@@ -1,0 +1,5 @@
+<view class='nav-tab'>
+  <view bindtap="getMovie" data-type="hot">正在热映</view>
+  <view bindtap="getMovie" data-type="top250">Top250</view>
+  <view bindtap="getMovie" data-type="about">即将上映</view>
+</view>

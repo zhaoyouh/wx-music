@@ -1,0 +1,101 @@
+<navigator class='music-con' url="/pages/musicList/list?num={{newMusic.billboard.billboard_type}}" hover-class="none">
+  <image src='{{newMusic.billboard.pic_s260}}'></image>
+    <view class='right'>
+      <h3 class=''>{{newMusic.billboard.name}}</h3>
+      <block wx:for="{{newMusic.song_list}}" wx:key="{{item.artist_id}}">
+        <view class='music-list'>
+            <text>{{item.rank}}、</text>
+            <text>{{item.author}} -- </text> 
+            <text>{{item.album_title}}</text> 
+        </view>
+      </block>
+    </view>
+</navigator>
+  
+<navigator class='music-con' url="/pages/musicList/list?num={{hotMusic.billboard.billboard_type}}" hover-class="none">
+  <image src='{{hotMusic.billboard.pic_s260}}'></image>
+  <view class='right'>
+    <h3 class=''>{{hotMusic.billboard.name}}</h3>
+    <block wx:for="{{hotMusic.song_list}}" wx:key="{{item.artist_id}}">
+      <view class='music-list'>
+          <text>{{item.rank}}、</text>
+          <text>{{item.author}} -- </text> 
+          <text>{{item.album_title}}</text> 
+      </view>
+    </block>
+  </view>
+</navigator>
+
+<navigator class='music-con' url="/pages/musicList/list?num={{networkMusic.billboard.billboard_type}}" hover-class="none">
+  <image src='{{networkMusic.billboard.pic_s260}}'></image>
+  <view class='right'>
+    <h3 class=''>{{networkMusic.billboard.name}}</h3>
+    <block wx:for="{{networkMusic.song_list}}" wx:key="{{item.artist_id}}">
+      <view class='music-list'>
+          <text>{{item.rank}}、</text>
+          <text>{{item.author}} -- </text> 
+          <text>{{item.album_title}}</text> 
+      </view>
+    </block>
+  </view>
+</navigator>
+
+
+<navigator class='music-con' url="/pages/musicList/list?num={{fashionMusic.billboard.billboard_type}}" hover-class="none">
+  <image src='{{fashionMusic.billboard.pic_s260}}'></image>
+  <view class='right'>
+    <h3 class=''>{{fashionMusic.billboard.name}}</h3>
+    <block wx:for="{{fashionMusic.song_list}}" wx:key="{{item.artist_id}}">
+      <view class='music-list'>
+          <text>{{item.rank}}、</text>
+          <text>{{item.author}} -- </text> 
+          <text>{{item.album_title}}</text> 
+      </view>
+    </block>
+  </view>
+</navigator>
+
+<navigator class='music-con' url="/pages/musicList/list?num={{duetMusic.billboard.billboard_type}}" hover-class="none">
+  <image src='{{duetMusic.billboard.pic_s260}}'></image>
+  <view class='right'>
+    <h3 class=''>{{duetMusic.billboard.name}}</h3>
+    <block wx:for="{{duetMusic.song_list}}" wx:key="{{item.artist_id}}">
+      <view class='music-list'>
+          <text>{{item.rank}}、</text>
+          <text>{{item.author}} -- </text> 
+          <text>{{item.album_title}}</text> 
+      </view>
+    </block>
+  </view>
+</navigator>
+
+<navigator class='music-con' url="/pages/musicList/list?num={{movieMusic.billboard.billboard_type}}" hover-class="none">
+  <image src='{{movieMusic.billboard.pic_s260}}'></image>
+  <view class='right'>
+    <h3 class=''>{{movieMusic.billboard.name}}</h3>
+    <block wx:for="{{movieMusic.song_list}}" wx:key="{{item.artist_id}}">
+      <view class='music-list'>
+          <text>{{item.rank}}、</text>
+          <text>{{item.author}} -- </text> 
+          <text>{{item.album_title}}</text> 
+      </view>
+    </block>
+  </view>
+</navigator>
+
+<navigator class='music-con' url="/pages/musicList/list?num={{foreignMusic.billboard.billboard_type}}" hover-class="none">
+  <image src='{{foreignMusic.billboard.pic_s260}}'></image>
+  <view class='right'>
+    <h3 class=''>{{foreignMusic.billboard.name}}</h3>
+    <block wx:for="{{foreignMusic.song_list}}" wx:key="{{item.artist_id}}">
+      <view class='music-list'>
+          <text>{{item.rank}}、</text>
+          <text>{{item.author}} -- </text> 
+          <text>{{item.album_title}}</text> 
+      </view>
+    </block>
+  </view>
+</navigator>
+
+
+

@@ -1,0 +1,21 @@
+<!--pages/my/my.wxml-->
+<navtab bind:changeData="reception"></navtab>
+<search bind:changeData="reception"></search>
+<text class='nav-title'>{{hotData.title}}</text>
+<block wx:for="{{hotData.subjects}}" wx:key="item.id">
+  <view class='moive-list'>
+    <image src='{{item.images.small}}'></image>
+    <view class='info'>
+      <view class='title'>{{item.title}}</view>
+      <view>综合评分：{{item.rating.average}}分</view>
+      <view>年份：{{item.year}}</view>
+      <view>类型：{{item.genres}}</view>
+      <view>
+        主演：<text wx:for="{{item.casts}}" wx:for-item="i" wx:key="{{i.id}}">{{i.name}}，</text>
+      </view>
+      <view>
+        导演：<text wx:for="{{item.directors}}" wx:for-item="d" wx:key="{{d.id}}">{{d.name}}，</text>
+      </view>
+    </view>
+  </view>
+</block>

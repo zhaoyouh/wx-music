@@ -1,0 +1,4 @@
+<view class='search'>
+  <input id='search' type='search' placeholder='请输入要搜索的名称或类型' bindinput="getVal"></input>
+  <label for='search' data-type='search' bindtap='getResult'>搜索</label>
+</view>

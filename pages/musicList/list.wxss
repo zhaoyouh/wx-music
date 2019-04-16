@@ -1,0 +1,108 @@
+/* 播放器样式 */
+.player{
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+  height: 60rpx;
+  padding: 10px 8rpx;
+  background: #fff;
+  border-radius: 50rpx;
+  border: 2rpx solid #999;
+}
+.player>image{
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+.player .info{
+  flex: 1;
+  width: 288rpx;
+  padding-right: 20rpx;
+}
+.player .left text{
+  font-size: 28rpx;
+  line-height: 32rpx;
+}
+.player .info image{
+  width: 42rpx;
+  height: 42rpx
+}
+.player .top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.player .top .left{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.player .top .song-title{
+  max-width: 160rpx;
+  overflow: hidden; 
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  margin-right: 10rpx
+}
+.player .time{
+  font-size: 24rpx;
+}
+/* 播放器样式 end*/
+
+.music-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32rpx;
+}
+.music-title image{
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+}
+.music-title text{
+  font-size: 50rpx;
+}
+.music-list{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 30rpx;
+  margin-bottom: 32rpx;
+}
+.music-list .rank{
+  width: 60rpx;
+  text-align: center;
+  font-size: 50rpx;
+  margin-right: 20rpx;
+}
+.music-list .right{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.music-list image{
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 32rpx;
+}
+.music-list .info{
+  flex: 1;
+  max-width: 500rpx;
+  font-size: 30rpx;
+  line-height: 38rpx
+}
+.music-list .info text{
+  display: block;
+}
+.music-list .info .author-name{
+  font-size: 26rpx;
+  color: #5B5E63;
+}

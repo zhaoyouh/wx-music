@@ -1,0 +1,29 @@
+/* pages/music/music.wxss */
+.music-con{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  box-shadow: 0 16rpx 12rpx rgba(6,18,30,.04);
+}
+.music-con image{
+  width: 260rpx;
+  height: 260rpx;
+  border-radius: 5rpx;
+  margin-right: 20rpx;
+}
+.music-con .right{
+  flex: 1;
+  max-width: 500rpx;
+}
+.right h3{
+  font-size: 32rpx;
+  color: #06121e;
+  line-height: 56rpx;
+  margin-bottom: 12rpx;
+}
+.music-list{
+  font-size: 24rpx;
+  line-height: 40rpx;
+  margin-bottom: 12rpx;
+}
