@@ -18,7 +18,7 @@ Page({
     musicType:'',
     musicUrl: '',
     duration: Number,
-    cTime: 0,
+    cTime: '00:00',
     content: [],
     playButton: '/images/pause.png',
     plyaFalg: false,
@@ -113,11 +113,14 @@ Page({
 
   // 监听播放更新进度
   onTimeUpdate: function () {
-    var that = this
+    var time, ctime, that = this;
     innerAudioContext.onTimeUpdate(function () {
       // console.log('监听改变：'+innerAudioContext.currentTime)
+      ctime = parseInt(innerAudioContext.currentTime);
+      time = that.changeTime(ctime);
+
       that.setData({
-        cTime: parseInt(innerAudioContext.currentTime)
+        cTime: time
       });
     })
   },
@@ -128,9 +131,22 @@ Page({
     innerAudioContext.onEnded(function () {
       innerAudioContext.stop();
       that.setData({
-        cTime: 0
+        cTime: '00:00'
       })
     })
+  },
+
+  //时间转化分，秒
+  changeTime: function (parameter) {
+    //获取分钟，除以60取整数，得到整数分钟
+    var m = parseInt(parameter / 60);
+    //获取秒数，秒数取佘，得到整数秒数
+    var s = parseInt(parameter % 60);
+
+    var minute = m < 10 ? '0' + m : m,
+      second = s < 10 ? '0' + s : s;
+
+    return minute + ':' + second
   },
 
   // 请求播放
@@ -149,9 +165,10 @@ Page({
       },
       success(res) {
         console.log(res.data);
+        var time = that.changeTime(res.data.bitrate.file_duration);
         that.setData({
           content: res.data,
-          duration: res.data.bitrate.file_duration,
+          duration: time,
           musicUrl: res.data.bitrate.show_link,
           show: false
         });

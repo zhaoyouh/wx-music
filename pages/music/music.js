@@ -8,8 +8,8 @@ Page({
     newMusic:[],
     hotMusic:[],
     networkMusic:[],
-    fashionMusic:[],
-    duetMusic:[],
+    douyinMusic:[],
+    electricMusic:[],
     movieMusic:[],
     foreignMusic:[],
   },
@@ -18,12 +18,12 @@ Page({
     var that = this;
 
     wx.request({
-      url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
+      // url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
+      url:'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
       data: {
-        'method': 'baidu.ting.billboard.billList',
-        'type': 1,
-        'size': 3,
-        'offset': 0
+        'page': 'detail',
+        'topid': 27,
+        "song_num": 3
       },
       method: 'get',
       header: {
@@ -41,12 +41,12 @@ Page({
     });
 
     wx.request({
-      url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
+      // url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
+      url:'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
       data: {
-        'method': 'baidu.ting.billboard.billList',
-        'type': 2,
-        'size': 3,
-        'offset': 0
+        'page': 'detail',
+        'topid': 26,
+        "song_num": 3
       },
       method: 'get',
       header: {
@@ -64,12 +64,11 @@ Page({
     });
 
     wx.request({
-      url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
+      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
       data: {
-        'method': 'baidu.ting.billboard.billList',
-        'type': 25,
-        'size': 3,
-        'offset': 0
+        'page': 'detail',
+        'topid': 28,
+        "song_num": 3
       },
       method: 'get',
       header: {
@@ -87,12 +86,11 @@ Page({
     });
 
     wx.request({
-      url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
+      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
       data: {
-        'method': 'baidu.ting.billboard.billList',
-        'type': 22,
-        'size': 3,
-        'offset': 0
+        'page': 'detail',
+        'topid': 60,
+        "song_num": 3
       },
       method: 'get',
       header: {
@@ -101,7 +99,7 @@ Page({
       success(res) {
         // console.log(res.data);
         that.setData({
-          fashionMusic: res.data
+          douyinMusic: res.data
         });
       },
       fail(res) {
@@ -110,12 +108,11 @@ Page({
     });
 
     wx.request({
-      url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
+      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
       data: {
-        'method': 'baidu.ting.billboard.billList',
-        'type': 23,
-        'size': 3,
-        'offset': 0
+        'page': 'detail',
+        'topid': 57,
+        "song_num": 3
       },
       method: 'get',
       header: {
@@ -124,7 +121,7 @@ Page({
       success(res) {
         // console.log(res.data);
         that.setData({
-          duetMusic: res.data
+          electricMusic: res.data
         });
       },
       fail(res) {
@@ -133,12 +130,11 @@ Page({
     });
 
     wx.request({
-      url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
+      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
       data: {
-        'method': 'baidu.ting.billboard.billList',
-        'type': 24,
-        'size': 3,
-        'offset': 0
+        'page': 'detail',
+        'topid': 29,
+        "song_num": 3
       },
       method: 'get',
       header: {
@@ -156,12 +152,11 @@ Page({
     });
 
     wx.request({
-      url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
+      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
       data: {
-        'method': 'baidu.ting.billboard.billList',
-        'type': 21,
-        'size': 3,
-        'offset': 0
+        'page': 'detail',
+        'topid': 3,
+        "song_num": 3
       },
       method: 'get',
       header: {

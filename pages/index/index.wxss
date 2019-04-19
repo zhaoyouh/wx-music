@@ -43,7 +43,7 @@
   justify-content: flex-start;
 }
 .player .top .song-title{
-  max-width: 160rpx;
+  max-width: 170rpx;
   overflow: hidden; 
   text-overflow:ellipsis;
   white-space: nowrap;

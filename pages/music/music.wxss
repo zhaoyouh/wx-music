@@ -26,4 +26,8 @@
   font-size: 24rpx;
   line-height: 40rpx;
   margin-bottom: 12rpx;
+  display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+overflow: hidden;
 }

@@ -6,7 +6,6 @@
     "pages/musicList/list"
   ],
   "window": {
-    "enablePullDownRefresh": true,
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
@@ -33,5 +32,6 @@
         "iconPath": "images/music1.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

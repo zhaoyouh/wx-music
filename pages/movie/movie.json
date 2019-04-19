@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "navtab": "/component/navTab/tab",
     "search": "/component/searchBar/search"
