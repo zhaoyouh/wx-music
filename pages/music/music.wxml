@@ -12,7 +12,7 @@
   </view>
 </navigator>
   
-<navigator class='music-con' url="/pages/musicList/list?num={{hotMusic.data.topID}}" hover-class="none">
+<navigator class='music-con' url="/pages/musicList/list?num={{hotMusic.topinfo.topID}}" hover-class="none">
   <image src='{{hotMusic.topinfo.pic_v12}}'></image>
   <view class='right'>
     <h3 class=''>{{hotMusic.topinfo.ListName}}</h3>
@@ -26,7 +26,7 @@
   </view>
 </navigator>
 
-<navigator class='music-con' url="/pages/musicList/list?num={{douyinMusic.data.topID}}" hover-class="none">
+<navigator class='music-con' url="/pages/musicList/list?num={{douyinMusic.topinfo.topID}}" hover-class="none">
   <image src='{{douyinMusic.topinfo.pic_v12}}'></image>
   <view class='right'>
     <h3 class=''>{{douyinMusic.topinfo.ListName}}</h3>
@@ -40,7 +40,7 @@
   </view>
 </navigator>
 
-<navigator class='music-con' url="/pages/musicList/list?num={{networkMusic.data.topID}}" hover-class="none">
+<navigator class='music-con' url="/pages/musicList/list?num={{networkMusic.topinfo.topID}}" hover-class="none">
   <image src='{{networkMusic.topinfo.pic_v12}}'></image>
   <view class='right'>
     <h3 class=''>{{networkMusic.topinfo.ListName}}</h3>
@@ -54,7 +54,7 @@
   </view>
 </navigator>
 
-<navigator class='music-con' url="/pages/musicList/list?num={{electricMusic.data.topID}}" hover-class="none">
+<!-- <navigator class='music-con' url="/pages/musicList/list?num={{electricMusic.topinfo.topID}}" hover-class="none">
   <image src='{{electricMusic.topinfo.pic_v12}}'></image>
   <view class='right'>
     <h3 class=''>{{electricMusic.topinfo.ListName}}</h3>
@@ -66,9 +66,9 @@
       </view>
     </block>
   </view>
-</navigator>
+</navigator> -->
 
-<navigator class='music-con' url="/pages/musicList/list?num={{movieMusic.data.topID}}" hover-class="none">
+<navigator class='music-con' url="/pages/musicList/list?num={{movieMusic.topinfo.topID}}" hover-class="none">
   <image src='{{movieMusic.topinfo.pic_v12}}'></image>
   <view class='right'>
     <h3 class=''>{{movieMusic.topinfo.ListName}}</h3>
@@ -82,7 +82,7 @@
   </view>
 </navigator>
 
-<navigator class='music-con' url="/pages/musicList/list?num={{foreignMusic.data.topID}}" hover-class="none">
+<navigator class='music-con' url="/pages/musicList/list?num={{foreignMusic.topinfo.topID}}" hover-class="none">
   <image src='{{foreignMusic.topinfo.pic_v12}}'></image>
   <view class='right'>
     <h3 class=''>{{foreignMusic.topinfo.ListName}}</h3>

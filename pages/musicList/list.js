@@ -16,13 +16,6 @@ Page({
     sizeNum:10,
     songnum:Number,
     musicType:'',
-    musicUrl: '',
-    duration: Number,
-    cTime: '00:00',
-    content: [],
-    playButton: '/images/pause.png',
-    plyaFalg: false,
-    show: true,
   },
 
   // 请求列表
@@ -30,12 +23,11 @@ Page({
     var that = this;
 
     wx.request({
-      url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
+      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
       data: {
-        'method': 'baidu.ting.billboard.billList',
-        'type': that.data.musicType,
-        'size': that.data.sizeNum,
-        'offset': 0
+        'page': 'detail',
+        'topid': that.data.musicType,
+        "song_num": that.data.sizeNum
       },
       method: 'get',
       header: {
@@ -45,7 +37,7 @@ Page({
         console.log(res.data);
         that.setData({
           musicList: res.data,
-          songnum: res.data.billboard.billboard_songnum
+          // songnum: res.data.billboard.billboard_songnum
         });
 
         setTimeout(function () {
@@ -56,129 +48,6 @@ Page({
         console.log(res.data)
       }
     })
-  },
-
-  // 初始化播放器
-  audio: function () {
-    var that = this;
-
-    innerAudioContext.src = that.data.musicUrl;
-
-    innerAudioContext.play();
-
-    setTimeout(function () {
-      console.log('进入播放：' + innerAudioContext.currentTime)
-      that.onTimeUpdate()
-    }, 1000)
-
-    that.onEnded()
-  },
-
-  // 开始播放事件
-  audioPlay: function () {
-    innerAudioContext.play();
-
-    this.setData({
-      playButton: '/images/pause.png',
-      plyaFalg: false
-    });
-
-    this.onTimeUpdate();
-
-    console.log('开始播放：' + innerAudioContext.currentTime)
-  },
-
-  // 暂停播放事件
-  audioPause: function () {
-    innerAudioContext.pause();
-
-    this.setData({
-      playButton: '/images/play.png',
-      plyaFalg: true
-    })
-
-    console.log('暂停播放：' + innerAudioContext.currentTime)
-  },
-
-  // 播放按钮切换事件
-  control: function () {
-    innerAudioContext.currentTime
-
-    if (this.data.plyaFalg) {
-      this.audioPlay()
-    } else {
-      this.audioPause()
-    }
-  },
-
-  // 监听播放更新进度
-  onTimeUpdate: function () {
-    var time, ctime, that = this;
-    innerAudioContext.onTimeUpdate(function () {
-      // console.log('监听改变：'+innerAudioContext.currentTime)
-      ctime = parseInt(innerAudioContext.currentTime);
-      time = that.changeTime(ctime);
-
-      that.setData({
-        cTime: time
-      });
-    })
-  },
-
-  //监听自然播放结束
-  onEnded: function () {
-    var that = this;
-    innerAudioContext.onEnded(function () {
-      innerAudioContext.stop();
-      that.setData({
-        cTime: '00:00'
-      })
-    })
-  },
-
-  //时间转化分，秒
-  changeTime: function (parameter) {
-    //获取分钟，除以60取整数，得到整数分钟
-    var m = parseInt(parameter / 60);
-    //获取秒数，秒数取佘，得到整数秒数
-    var s = parseInt(parameter % 60);
-
-    var minute = m < 10 ? '0' + m : m,
-      second = s < 10 ? '0' + s : s;
-
-    return minute + ':' + second
-  },
-
-  // 请求播放
-  playMusic: function (e) {
-    var that = this;
-
-    wx.request({
-      url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
-      data: {
-        'method': 'baidu.ting.song.play',
-        'songid': e.currentTarget.dataset.songid,
-      },
-      method: 'get',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data);
-        var time = that.changeTime(res.data.bitrate.file_duration);
-        that.setData({
-          content: res.data,
-          duration: time,
-          musicUrl: res.data.bitrate.show_link,
-          show: false
-        });
-
-        that.audio()
-      },
-      fail(res) {
-        console.log(res.data)
-      }
-    });
   },
 
   /**

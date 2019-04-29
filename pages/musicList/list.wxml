@@ -1,34 +1,19 @@
 <!-- 音乐列表 -->
 <view class='music-title'>
-  <image src='{{musicList.billboard.pic_s260}}'></image>
-  <text>{{musicList.billboard.name}}</text>
+  <image src='{{musicList.topinfo.MacListPicUrl}}'></image>
+  <text>{{musicList.topinfo.ListName}}</text>
 </view>
-<block wx:for="{{musicList.song_list}}" wx:key="{{item.artist_id}}">
-  <view class='music-list' data-songid="{{item.song_id}}" bindtap='playMusic'>
-    <text class='rank'>{{item.rank}}</text>
+<block wx:for="{{musicList.songlist}}" wx:key="{{item.data.vid}}">
+  <navigator class='music-list'url="/pages/musicDetails/details?mid={{item.data.albummid}}" hover-class="none">
+    <text class='rank'>{{item.cur_count}}、</text>
     <view class='right'>
-      <image src='{{item.pic_small}}'></image>
+      <image src='https://y.gtimg.cn/music/photo_new/T002R300x300M000{{item.data.albummid}}.jpg'></image>
       <view class='info'>
-        <text>{{item.title}}</text>
-        <text class='author-name'>{{item.author}}</text>
+        <text>{{item.data.songname}}</text>
+        <text  wx:for="{{item.data.singer}}" wx:for-item="i" wx:key="{{i.id}}" class='author-name'>{{i.name}}</text>
       </view>
     </view>
-  </view>
+  </navigator>
 </block>
 
-<!-- 播放器 -->
-<view class='player' hidden="{{show}}">
-  <image src='{{content.songinfo.pic_small}}'></image>
-  <view class='info'>
-      <view class='top'>
-        <view class='left'>
-        <text class='song-title'>{{content.songinfo.title}}</text>
-        <text>- {{content.songinfo.author}}</text>
-      </view>
-      <image bindtap='control' src='{{playButton}}'></image>
-    </view>
 
-    <view class='time'><text>{{cTime}}</text>/{{duration}}</view>
-    <!-- <view class='progress'>进度条</view> -->
-  </view>
-</view>

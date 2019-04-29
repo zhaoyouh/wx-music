@@ -1,0 +1,17 @@
+<view class='mask'>
+  <view></view>
+  <image src='{{albumPic}}'></image>
+</view>
+<view class='details-con'>
+  <h2>标题</h2>
+  <view class='name'>名字</view>
+  <image src='{{albumPic}}'></image>
+  <view class='lck'></view>
+  <view class='progress'>
+    <ul>
+      <li><text>{{begintime}}</text></li>
+      <li class='line'><view style='width:{{progress}}px'></view><span style="left:{{progress}}px"></span></li>
+      <li><text>{{endTime}}</text></li>
+    </ul>
+  </view>
+</view>

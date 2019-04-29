@@ -1,4 +1,9 @@
 /**app.wxss**/
+.head-red{
+  font-size: 60rpx;
+  color: red;
+}
+
 .container {
   position: fixed;
   top: 0;

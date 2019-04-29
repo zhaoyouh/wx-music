@@ -10,13 +10,16 @@ innerAudioContext.onError((res) => {
 
 Page({
   data: {
-    musicUrl: 'https://api.bzqll.com/music/tencent/url?id=0021rBlZ1gQiLy&key=579621905&br=320',
-    duration:Number,
+    musicUrl: '',
+    albumpic:'',
+    totalTime:0,
     cTime:'00:00',
     content:[],
     playButton:'/images/pause.png',
     plyaFalg:false,
-    show:false,
+    show:true,
+    aa: app.data.globalData,
+    width:0,
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -33,8 +36,9 @@ Page({
 
     // this.data.musicUrl = 'http://zhangmenshiting.qianqian.com/data2/music/b10b0b3b1b713710ed10ba6e93adefc2/613440998/613440998.mp3?xcode=a79d11b662a6533ef1962d1d1690fc93'
 
+    console.log(that.data.totalTime)
     that.setData({
-      duration:that.changeTime(269)
+      duration: that.changeTime(that.data.totalTime)
     })
 
     innerAudioContext.src = that.data.musicUrl;
@@ -46,6 +50,7 @@ Page({
       that.onTimeUpdate()
     }, 1000)
 
+    that.setWidth();
     // that.onEnded()
   },
 
@@ -56,7 +61,6 @@ Page({
 
     this.setData({
       playButton: '/images/pause.png',
-      plyaFalg: false
     });
 
     this.onTimeUpdate();
@@ -70,7 +74,6 @@ Page({
 
     this.setData({
       playButton: '/images/play.png',
-      plyaFalg: true
     })
 
     console.log('暂停播放：'+innerAudioContext.currentTime)
@@ -82,9 +85,18 @@ Page({
     
     if (this.data.plyaFalg) {
       this.audioPlay()
+      this.setData({
+        plyaFalg: false
+      })
+
+      this.setWidth();
     }else{
       this.audioPause()
+      this.setData({
+        plyaFalg: true
+      })
     }
+
   },
 
   // 监听播放更新进度
@@ -95,7 +107,7 @@ Page({
       ctime = parseInt(innerAudioContext.currentTime);
       time = that.changeTime(ctime);
       that.setData({
-        cTime: time
+        cTime: time,
       });
     })
   },
@@ -131,7 +143,7 @@ Page({
       // url:'https://u.y.qq.com/cgi-bin/musicu.fcg',
       url:'https://c.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg',
       data: {
-        'albummid':'004NDHly42oXD2',
+        'albummid':'0010UePb4dyfoi',
       },
       method: 'get',
       header: {
@@ -141,37 +153,15 @@ Page({
         console.log(res.data);
 
         // var time = that.changeTime(res.data.bitrate.file_duration)
-        // that.setData({
-          // content: res.data.detail,
-          // duration: time,
-          // musicUrl: res.data.bitrate.show_link,
+        that.setData({
+          content: res.data.data,
+          totalTime: res.data.data.list[0].interval, 
+          albumpic: "https://y.gtimg.cn/music/photo_new/T002R300x300M000" + res.data.data.mid + ".jpg",
+          musicUrl: "https://api.bzqll.com/music/tencent/url?id=" + res.data.data.list[0].songmid + "&key=579621905&br=320",
           // show:false
-        // });
+        });
 
         // that.audio();
-      },
-      fail(res) {
-        console.log(res.data)
-      }
-    });
-
-    wx.request({
-      // url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
-      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
-      data: {
-        'page': 'detail',
-        'topid': 26,
-        "song_num": 3
-      },
-      method: 'get',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data);
-        // that.setData({
-        //   hotMusic: res.data
-        // });
       },
       fail(res) {
         console.log(res.data)
@@ -183,9 +173,45 @@ Page({
     
     },
 
+    //进度条
+    setWidth:function(){
+      var that = this, step,timer, leader, target;
+      var query = wx.createSelectorQuery();
+      query.select('.progress').boundingClientRect();
+      query.exec(function (rect) {
+        target = rect[0].width;
+
+        step = +(target / that.data.totalTime).toFixed(1);
+      });
+
+      if (this.data.plyaFalg) {
+        clearTimeout(timer);
+        console.log('清除定时器')
+        return false;
+      }
+
+      timer = setTimeout(function () {
+        leader = +that.data.width;
+        if (leader>=target) {
+          that.setData({
+            width: +target
+          });
+
+          clearTimeout(timer);
+        }else{
+          leader = (leader + step).toFixed(1)
+          that.setData({
+            width: +leader
+          })
+
+          that.setWidth();
+        }
+      }, 1000)
+    },
+
   onReady: function () {
-  this.getMusic();
-  this.audio();
+  // this.getMusic();
+  // this.audio();
 
     //获得popup组件
     // this.popup = this.selectComponent("#popup");
@@ -193,7 +219,6 @@ Page({
   },
 
   onLoad: function () {
-
   },
 
 })

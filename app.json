@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/movie/movie",
     "pages/music/music",
-    "pages/musicList/list"
+    "pages/musicList/list",
+    "pages/musicDetails/details"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,12 +19,6 @@
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "images/home1.png"
-      },
-      {
-        "selectedIconPath": "images/movie2.png",
-        "pagePath": "pages/movie/movie",
-        "text": "电影",
-        "iconPath": "images/movie1.png"
       },
       {
         "selectedIconPath": "images/music2.png",

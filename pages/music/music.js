@@ -9,7 +9,7 @@ Page({
     hotMusic:[],
     networkMusic:[],
     douyinMusic:[],
-    electricMusic:[],
+    // electricMusic:[],
     movieMusic:[],
     foreignMusic:[],
   },
