@@ -18,6 +18,11 @@ Page({
     musicType:'',
   },
 
+  play:function(e){
+    this.player.stop();
+    this.player.getMusic(e.currentTarget.dataset.albummid);
+  },
+
   // 请求列表
   getData: function () {
     var that = this;
@@ -34,10 +39,9 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res.data);
+        // console.log(res.data);
         that.setData({
           musicList: res.data,
-          // songnum: res.data.billboard.billboard_songnum
         });
 
         setTimeout(function () {
@@ -54,6 +58,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获得popup组件
+    this.player = this.selectComponent("#player");
+    // this.player.playMusic();
+
     // 初始化数据
     this.setData({
       musicType: options.num
@@ -65,6 +73,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    
 
   },
 
@@ -86,7 +95,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.player.stop();
   },
 
   /**

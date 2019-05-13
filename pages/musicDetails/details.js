@@ -180,6 +180,7 @@ Page({
 
     wx.request({
       url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg',
+      // url: 'https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg?format=json205361747&platform=yqq&cid=205361747&songmid=003lghpv0jfFXG&filename=C400003lghpv0jfFXG.m4a&guid=126548448',
       data: {
         // 'albummid': '0010UePb4dyfoi',
         'albummid': that.data.albummId,
@@ -190,7 +191,6 @@ Page({
       },
       success(res) {
         console.log(res.data);
-        var a = 
         that.setData({
           content: res.data.data,
           totalTime: res.data.data.list[0].interval,

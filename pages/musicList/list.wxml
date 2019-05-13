@@ -4,7 +4,7 @@
   <text>{{musicList.topinfo.ListName}}</text>
 </view>
 <block wx:for="{{musicList.songlist}}" wx:key="{{item.data.vid}}">
-  <navigator class='music-list'url="/pages/musicDetails/details?mid={{item.data.albummid}}" hover-class="none">
+  <view class='music-list' data-albummid="{{item.data.albummid}}" hover-class="none" bindtap='play'>
     <text class='rank'>{{item.cur_count}}、</text>
     <view class='right'>
       <image src='https://y.gtimg.cn/music/photo_new/T002R300x300M000{{item.data.albummid}}.jpg'></image>
@@ -13,7 +13,9 @@
         <text  wx:for="{{item.data.singer}}" wx:for-item="i" wx:key="{{i.id}}" class='author-name'>{{i.name}}</text>
       </view>
     </view>
-  </navigator>
+  </view>
 </block>
+
+<player id="player"></player>
 
 

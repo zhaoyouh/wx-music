@@ -1,14 +1,12 @@
 <!--index.wxml-->
-<!-- <navtab msg="{{msg}}" bind:msg="onMyEvent"></navtab> -->
-<!-- <search bind:val="onMyEvent"></search> -->
-<!-- <navigator url="/pages/musicList/list?num=1" hover-class="none">跳转到新页面</navigator> -->
-<!-- <image class='bg-pic' src='/images/big-bg.jpg'></image> -->
+
 <view class="container">
-<!-- <view bindtap='getMusic'  data-songid="613440970">测试</view> -->
-<!-- <h2>测试标题</h2> -->
 
   <navigator url="/pages/music/music" open-type="switchTab" hover-class="none">音乐资讯</navigator>
-  <!-- <navigator url="/pages/musicDetails/details" open-type="navigate" hover-class="none">详情页</navigator> -->
+
+<!-- 按钮示范 -->
+  <!-- <button open-type="contact" bindcontact="handleContact">客服</button> -->
+  <!-- <button open-type="share">分享</button> -->
 
 </view>
 
@@ -20,16 +18,15 @@
         <text>- {{content.songinfo.author}}</text>
       </li>
 
-      <li class='progress'><view style='width:{{width}}px'></view><span style="left:{{width}}px"></span></li>
+      <!-- <li class='progress'><view style='width:{{width}}px'></view><span style="left:{{width}}px"></span></li> -->
 
       <li class='time'><text>{{cTime}}</text> / {{duration}}</li>
   </ul>
 
  <view class='btns'><image bindtap='control' src='{{playButton}}'></image></view>
-
      
 </view>
 
-<!-- <button type="primary" bindtap="audioPlay">播放</button> -->
-<!-- <button type="primary" bindtap="audioPause">暂停</button> -->
+<!-- <player id="player"></player> -->
+
 

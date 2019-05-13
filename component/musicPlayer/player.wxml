@@ -1,0 +1,17 @@
+<!--component/musicPlayer/player.wxml-->
+<view class='player'>
+  <image src='{{albumPic}}'></image>
+  <ul class='info'>
+      <li class='msg'>
+        <text class='song-title'>{{musicTitle}}</text>
+        <text>- {{musicAuthor}}</text>
+      </li>
+
+      <li class='progress'><view style='width:{{progress}}px'></view><span style="left:{{progress}}px"></span></li>
+
+      <li class='time'><text>{{begintime}}</text> / <text>{{endTime}}</text></li>
+  </ul>
+
+ <view class='btns'><image bindtap='control' src='{{playButton}}'></image></view>
+     
+</view>

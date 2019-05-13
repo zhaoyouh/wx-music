@@ -10,12 +10,12 @@ innerAudioContext.onError((res) => {
 
 Page({
   data: {
-    musicUrl: '',
+    musicUrl: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',
     albumpic:'',
     totalTime:0,
     cTime:'00:00',
     content:[],
-    playButton:'/images/pause.png',
+    // playButton:'/images/pause.png',
     plyaFalg:false,
     show:true,
     aa: app.data.globalData,
@@ -34,8 +34,6 @@ Page({
 
     // https://api.bzqll.com/music/tencent/url?id=曲目id &key=579621905&br=320  播放链接
 
-    // this.data.musicUrl = 'http://zhangmenshiting.qianqian.com/data2/music/b10b0b3b1b713710ed10ba6e93adefc2/613440998/613440998.mp3?xcode=a79d11b662a6533ef1962d1d1690fc93'
-
     console.log(that.data.totalTime)
     that.setData({
       duration: that.changeTime(that.data.totalTime)
@@ -50,7 +48,7 @@ Page({
       that.onTimeUpdate()
     }, 1000)
 
-    that.setWidth();
+    // that.setWidth();
     // that.onEnded()
   },
 
@@ -141,9 +139,15 @@ Page({
 
     wx.request({
       // url:'https://u.y.qq.com/cgi-bin/musicu.fcg',
-      url:'https://c.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg',
+      // url: 'https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg',
+      url:"https://c.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg",
       data: {
-        'albummid':'0010UePb4dyfoi',
+        // cid:205361747,
+        // songmid:'003lghpv0jfFXG', 
+        // filename:'C400003lghpv0jfFXG.m4a', 
+        // guid:"ffffffff82def4af4b12b3cd9337d5e7",
+
+        albummid:'004NDHly42oXD2', 
       },
       method: 'get',
       header: {
@@ -153,13 +157,13 @@ Page({
         console.log(res.data);
 
         // var time = that.changeTime(res.data.bitrate.file_duration)
-        that.setData({
-          content: res.data.data,
-          totalTime: res.data.data.list[0].interval, 
-          albumpic: "https://y.gtimg.cn/music/photo_new/T002R300x300M000" + res.data.data.mid + ".jpg",
-          musicUrl: "https://api.bzqll.com/music/tencent/url?id=" + res.data.data.list[0].songmid + "&key=579621905&br=320",
-          // show:false
-        });
+        // that.setData({
+        //   content: res.data.data,
+        //   totalTime: res.data.data.list[0].interval, 
+        //   albumpic: "https://y.gtimg.cn/music/photo_new/T002R300x300M000" + res.data.data.mid + ".jpg",
+        //   musicUrl: "https://api.bzqll.com/music/tencent/url?id=" + res.data.data.list[0].songmid + "&key=579621905&br=320",
+        //   show:false
+        // });
 
         // that.audio();
       },
@@ -209,12 +213,16 @@ Page({
       }, 1000)
     },
 
+    
+
   onReady: function () {
   // this.getMusic();
   // this.audio();
 
     //获得popup组件
-    // this.popup = this.selectComponent("#popup");
+    // this.player = this.selectComponent("#player");
+    // this.player.setWidth();
+    // this.player.playMusic();
 
   },
 
