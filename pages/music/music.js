@@ -1,4 +1,5 @@
 // pages/music/music.js
+const api = require("../../component/api/index")
 Page({
 
   /**
@@ -9,169 +10,73 @@ Page({
     hotMusic:[],
     networkMusic:[],
     douyinMusic:[],
-    // electricMusic:[],
     movieMusic:[],
     foreignMusic:[],
   },
 
-  getMusic: function () {
-    var that = this;
-
-    wx.request({
-      // url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
-      url:'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
-      data: {
-        'page': 'detail',
-        'topid': 27,
-        "song_num": 3
-      },
-      method: 'get',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data);
-        that.setData({
-          newMusic: res.data
-        });
-      },
-      fail(res) {
-        console.log(res.data)
-      }
-    });
-
-    wx.request({
-      // url: 'http://tingapi.ting.baidu.com/v1/restserver/ting',
-      url:'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
-      data: {
-        'page': 'detail',
-        'topid': 26,
-        "song_num": 3
-      },
-      method: 'get',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        // console.log(res.data);
-        that.setData({
-          hotMusic: res.data
-        });
-      },
-      fail(res) {
-        console.log(res.data)
-      }
-    });
-
-    wx.request({
-      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
-      data: {
-        'page': 'detail',
-        'topid': 28,
-        "song_num": 3
-      },
-      method: 'get',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        // console.log(res.data);
-        that.setData({
-          networkMusic: res.data
-        });
-      },
-      fail(res) {
-        console.log(res.data)
-      }
-    });
-
-    wx.request({
-      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
-      data: {
-        'page': 'detail',
-        'topid': 60,
-        "song_num": 3
-      },
-      method: 'get',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        // console.log(res.data);
-        that.setData({
-          douyinMusic: res.data
-        });
-      },
-      fail(res) {
-        console.log(res.data)
-      }
-    });
-
-    wx.request({
-      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
-      data: {
-        'page': 'detail',
-        'topid': 57,
-        "song_num": 3
-      },
-      method: 'get',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        // console.log(res.data);
-        that.setData({
-          electricMusic: res.data
-        });
-      },
-      fail(res) {
-        console.log(res.data)
-      }
-    });
-
-    wx.request({
-      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
-      data: {
-        'page': 'detail',
-        'topid': 29,
-        "song_num": 3
-      },
-      method: 'get',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        // console.log(res.data);
-        that.setData({
-          movieMusic: res.data
-        });
-      },
-      fail(res) {
-        console.log(res.data)
-      }
-    });
-
-    wx.request({
-      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
-      data: {
-        'page': 'detail',
-        'topid': 3,
-        "song_num": 3
-      },
-      method: 'get',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        // console.log(res.data);
-        that.setData({
-          foreignMusic: res.data
-        });
-      },
-      fail(res) {
-        console.log(res.data)
-      }
-    });
+  getData:function(){
+    let params1 = {
+      'page': 'detail',
+      'topid': 27,
+      "song_num": 3
+    }
+    let params2 = {
+      'page': 'detail',
+      'topid': 26,
+      "song_num": 3
+    }
+    let params3 = {
+      'page': 'detail',
+      'topid': 28,
+      "song_num": 3
+    }
+    let params4 = {
+      'page': 'detail',
+      'topid': 60,
+      "song_num": 3
+    }
+   
+    let params6 = {
+      'page': 'detail',
+      'topid': 29,
+      "song_num": 3
+    }
+    let params7 = {
+      'page': 'detail',
+      'topid': 3,
+      "song_num": 3
+    }
+    api.getMusic(params1).then(res=>{
+      this.setData({
+        newMusic: res
+      });
+    })
+    api.getMusic(params2).then(res=>{
+      this.setData({
+        hotMusic: res
+      });
+    })
+    api.getMusic(params3).then(res=>{
+      this.setData({
+        networkMusic: res
+      });
+    })
+    api.getMusic(params4).then(res=>{
+      this.setData({
+        douyinMusic: res
+      });
+    })
+    api.getMusic(params6).then(res=>{
+      this.setData({
+        movieMusic: res
+      });
+    })
+    api.getMusic(params7).then(res=>{
+      this.setData({
+        foreignMusic: res
+      });
+    })
+    
   },
 
   /**
@@ -179,7 +84,8 @@ Page({
    */
   onLoad: function (options) {
     // 初始化数据
-    this.getMusic();
+    // this.getMusic();
+    this.getData()
   },
 
   /**

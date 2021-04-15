@@ -1,4 +1,5 @@
 // pages/musicList/list.js
+const api = require("../../component/api/index")
 const innerAudioContext = wx.createInnerAudioContext();
 innerAudioContext.autoplay = false;
 innerAudioContext.onError((res) => {
@@ -25,32 +26,15 @@ Page({
 
   // 请求列表
   getData: function () {
-    var that = this;
-
-    wx.request({
-      url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
-      data: {
-        'page': 'detail',
-        'topid': that.data.musicType,
-        "song_num": that.data.sizeNum
-      },
-      method: 'get',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        // console.log(res.data);
-        that.setData({
-          musicList: res.data,
-        });
-
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 2000)
-      },
-      fail(res) {
-        console.log(res.data)
-      }
+    let params = {
+      'page': 'detail',
+      'topid': this.data.musicType,
+      "song_num": this.data.sizeNum
+    }
+    api.getMusic(params).then(res=>{
+      this.setData({
+        musicList:res
+      })
     })
   },
 

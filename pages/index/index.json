@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "navtab": "/component/navTab/tab",
     "player": "/component/musicPlayer/player"
   }
 }
